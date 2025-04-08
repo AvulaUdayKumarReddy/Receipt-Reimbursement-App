@@ -17,7 +17,7 @@ namespace Receipt_Reimbursement_App.Controllers
         {
             return View();
         }
-
+        //view to display success message.
         public IActionResult Success()
         {
             return View();

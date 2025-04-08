@@ -24,6 +24,7 @@ namespace Receipt_Reimbursement_App.Controllers
 
             if(!ModelState.IsValid)
             {
+                //to see if all requirements that are mentioned in annotations gets true.
                 return View(reimbursement);
             }
             byte[]? fileBytes = null;
@@ -33,13 +34,16 @@ namespace Receipt_Reimbursement_App.Controllers
             if (File != null && File.Length > 0)
             {
                 using (var ms = new MemoryStream())
-                {
+                { 
+
+                    //file parsing
                     await File.CopyToAsync(ms);
                     fileBytes = ms.ToArray();
                     fileName = File.FileName;
                     fileType = File.ContentType;
                 }
             }
+            //file assignment to model
             reimbursement.FileData= fileBytes;
             reimbursement.FileName= fileName;
             reimbursement.ContentType= fileType;
